@@ -9,7 +9,7 @@ const mongoose=require('mongoose')
  const adminRoutes=require('./routes/adminRoute')
 
  app.use(cors({
-    origin: 'https://ifoot.vercel.app/', // Specific origin of your frontend
+    origin: 'http://localhost:3000', // Specific origin of your frontend
     credentials: true                // Allow cookies to be included in requests
 }));
  const cookieParser = require('cookie-parser');

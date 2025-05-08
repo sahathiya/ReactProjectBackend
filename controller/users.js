@@ -110,16 +110,10 @@ const userLogin=async(req,res,next)=>{
         })
 
         
-        res.cookie('admin',user,{
-            httpOnly:false,
-            secure:true,
-            sameSite:'lax',
-            maxAge:7*24*60*60*1000
-    
-        })
+       
         
         
-       return  res.status(200).json({status:'success', message:'admin logged successfully'})
+       return  res.status(200).json({status:'success', message:'admin logged successfully',user})
        }else{
          //user login and JWT
         const token = jwt.sign({ id: user._id, username: user.username, email: user.email },process.env.JWT_KEY, { expiresIn: '1d' })
@@ -140,14 +134,8 @@ const userLogin=async(req,res,next)=>{
             maxAge: 7 *24 *60 *60 *1000 
         })
 
-        res.cookie("user", user, {
-            httpOnly: false,
-            secure: true,
-            sameSite: "lax",
-            maxAge: 24 *60 *60 *1000 
-        })
-        
-        res.status(200).json({status:'success',message:'user login succeessfully completed'})
+       
+        res.status(200).json({status:'success',message:'user login succeessfully completed',user})
        }
         
     
@@ -165,12 +153,7 @@ const userLogout=async(req,res)=>{
             secure: true,
             sameSite: 'none',
         });
-        res.clearCookie("user", {
-            httpOnly: true,
-            secure: true,
-            sameSite: "none",
-            
-        })
+       
         res.status(200).json({ status: 'success', message: 'Logout successful' })
     } catch (error) {
         res.status(404).send('logout failed')
@@ -193,11 +176,7 @@ const adminLogout=async(req,res)=>{
             sameSite: 'none',
         });
 
-        res.clearCookie('admin', {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'none',
-        });
+       
         res.status(200).json({ status: 'success', message: ' admin Logout successful' })
     } catch (error) {
         res.status(404).send(' admin logout failed')

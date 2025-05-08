@@ -14,18 +14,9 @@ const userSchema=new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        // minlength: 8,
+       
       },
-    // address: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   phonenumber: {
-    //     type: Number,
-    //     unique: true,
-    //     required: true,
-    //     // match: [/^\d{10}$/, 'Phone number should be 10 digits'],
-    //   },
+   
     admin: {
         type: Boolean,
         default: false,
